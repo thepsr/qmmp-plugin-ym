@@ -1,0 +1,25 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>ym_plugin_ru.qm</file>
+    <file>ym_plugin_uk_UA.qm</file>
+    <file>ym_plugin_zh_CN.qm</file>
+    <file>ym_plugin_zh_TW.qm</file>
+    <file>ym_plugin_tr.qm</file>
+    <file>ym_plugin_cs.qm</file>
+    <file>ym_plugin_pt_BR.qm</file>
+    <file>ym_plugin_de.qm</file>
+    <file>ym_plugin_pl_PL.qm</file>
+    <file>ym_plugin_fr.qm</file>
+    <file>ym_plugin_it.qm</file>
+    <file>ym_plugin_kk.qm</file>
+    <file>ym_plugin_lt.qm</file>
+    <file>ym_plugin_hu.qm</file>
+    <file>ym_plugin_nl.qm</file>
+    <file>ym_plugin_ja.qm</file>
+    <file>ym_plugin_sk.qm</file>
+    <file>ym_plugin_es.qm</file>
+    <file>ym_plugin_he.qm</file>
+    <file>ym_plugin_gl_ES.qm</file>
+  </qresource>
+</RCC>

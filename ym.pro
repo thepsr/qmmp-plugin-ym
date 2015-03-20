@@ -1,7 +1,10 @@
 TEMPLATE = subdirs
 
-SUBDIRS = translations plugin
+SUBDIRS = translations plugin package
  
+package.file = package/package.pro
+package.depends = plugin
+
 plugin.file = plugin/plugin.pro
 plugin.depends = translations
 

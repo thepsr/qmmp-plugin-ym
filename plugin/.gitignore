@@ -1,0 +1,4 @@
+lib*.so
+Makefile
+build
+qrc_*.cpp

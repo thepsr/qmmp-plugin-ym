@@ -120,7 +120,7 @@ void DecoderYmFactory::showSettings(QWidget *)
 void DecoderYmFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About YM Audio Plugin"),
-                        tr("Qmmp YM Audio Plugin")+" V 0.1\n"+
+                        tr("Qmmp YM Audio Plugin")+" V 0.2\n"+
                         tr("Written by:")+" Georges Thill\n"+
                         "\n"+
                         tr("Based on:")+"\n"+

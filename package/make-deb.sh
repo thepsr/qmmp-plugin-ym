@@ -1,7 +1,8 @@
 #!/bin/bash
 
 PKGNAME=qmmp-plugin-ym
-PKGVERS=0.2-1
+PKGDIST=$(lsb_release -c -s)
+PKGVERS=0.2-1ubuntu1~${PKGDIST}
 PKGARCH=$(dpkg --print-architecture)
 
 mkdir -p ${PKGNAME}_${PKGVERS}/usr/lib/qmmp/Input

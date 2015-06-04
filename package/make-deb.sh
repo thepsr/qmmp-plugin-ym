@@ -5,7 +5,15 @@ PKGDIST=$(lsb_release -c -s)
 PKGVERS=0.2-1ubuntu1~${PKGDIST}
 PKGARCH=$(dpkg --print-architecture)
 
-mkdir -p ${PKGNAME}_${PKGVERS}/usr/lib/qmmp/Input
+if [ "${PKGDIST}" == "trusty" ] ; then
+    LPATH=usr/lib/qmmp/Input
+elif [ "${PKGDIST}" == "utopic" ] ; then
+    LPATH=usr/lib/qmmp/Input
+else
+    LPATH=usr/lib/qmmp/qmmp/Input
+fi
+
+mkdir -p ${PKGNAME}_${PKGVERS}/${LPATH}/
 mkdir -p ${PKGNAME}_${PKGVERS}/DEBIAN
 
 cat >${PKGNAME}_${PKGVERS}/DEBIAN/control <<EOF
@@ -23,8 +31,8 @@ Description: qmmp audio player - input plugin for ym music files
 EOF
 
 #cp LICENSE ${PKGNAME}_${PKGVERS}/DEBIAN/license
-cp ../plugin/libym.so ${PKGNAME}_${PKGVERS}/usr/lib/qmmp/Input/
-chmod 644 ${PKGNAME}_${PKGVERS}/usr/lib/qmmp/Input/libym.so
+cp ../plugin/libym.so ${PKGNAME}_${PKGVERS}/${LPATH}/
+chmod 644 ${PKGNAME}_${PKGVERS}/${LPATH}/libym.so
 
 # create an install package
 dpkg-deb --build ${PKGNAME}_${PKGVERS} .

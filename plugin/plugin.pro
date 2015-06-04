@@ -35,6 +35,7 @@ TEMPLATE = lib
 RESOURCES = ../translations/translations.qrc
 
 unix {
+    QMAKE_LIBDIR += /usr/lib/qmmp
     LIBS += -lqmmp
     QMAKE_CLEAN =./libym.so
 }

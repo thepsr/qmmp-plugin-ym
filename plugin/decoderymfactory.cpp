@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2015, Georges Thill
+ * Copyright (c) 2015-2016, Georges Thill
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  ******************************************************************************/
 
+#include <QMessageBox>
 #include <QtGui>
 #include <QRegExp>
 
@@ -70,7 +71,7 @@ Decoder *DecoderYmFactory::create(const QString &path, QIODevice *)
     return new DecoderYm(path);
 }
 
-QList<FileInfo *> DecoderYmFactory::createPlayList(const QString &fileName, bool useMetaData)
+QList<FileInfo *> DecoderYmFactory::createPlayList(const QString &fileName, bool useMetaData, QStringList *)
 {
     QList <FileInfo *> list;
     CYmMusic *pMusic;
@@ -120,7 +121,7 @@ void DecoderYmFactory::showSettings(QWidget *)
 void DecoderYmFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About YM Audio Plugin"),
-                        tr("Qmmp YM Audio Plugin")+" V 0.2\n"+
+                        tr("Qmmp YM Audio Plugin")+" V 0.3\n"+
                         tr("Written by:")+" Georges Thill\n"+
                         "\n"+
                         tr("Based on:")+"\n"+
@@ -138,5 +139,5 @@ QTranslator *DecoderYmFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(ym, DecoderYmFactory)
+
 

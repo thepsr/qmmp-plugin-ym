@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2015, Georges Thill
+ * Copyright (c) 2015-2016, Georges Thill
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -41,6 +41,7 @@ class DecoderYmFactory : public QObject,
                           DecoderFactory
 {
 Q_OBJECT
+Q_PLUGIN_METADATA(IID "org.qmmp.qmmp.DecoderFactoryInterface.1.0")
 Q_INTERFACES(DecoderFactory);
 
 public:
@@ -48,7 +49,7 @@ public:
     bool canDecode(QIODevice *input) const;
     const DecoderProperties properties() const;
     Decoder *create(const QString &path, QIODevice *);
-    QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData);
+    QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData, QStringList *);
     MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0);
     void showSettings(QWidget *parent);
     void showAbout(QWidget *parent);

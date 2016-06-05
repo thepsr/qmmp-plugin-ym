@@ -1,8 +1,9 @@
 TEMPLATE = aux
-TARGET   = 
-CONFIG  += no_link target_predeps
 
-QMAKE_POST_LINK  = fakeroot -- ./make-deb.sh
-#QMAKE_CLEAN     += batch_output.obj
+OBJECTS_DIR = ./
+DESTDIR = ./
+
+first.commands = fakeroot -- ./make-deb.sh
+QMAKE_EXTRA_TARGETS += first
 
 

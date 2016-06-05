@@ -30,6 +30,8 @@ plugin
 
 QMAKE_CXXFLAGS += -Wno-unused-parameter
 
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
 TEMPLATE = lib
 
 RESOURCES = ../translations/translations.qrc

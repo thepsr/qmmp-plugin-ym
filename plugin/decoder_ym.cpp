@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2015, Georges Thill
+ * Copyright (c) 2015-2016, Georges Thill
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
@@ -81,7 +81,7 @@ bool DecoderYm::initialize()
         return false;
     }
 
-    configure(m_freq, 1, Qmmp::PCM_S16LE);
+    configure(m_freq, 2, Qmmp::PCM_S16LE);
     
     qDebug("DecoderYm: detected format: \"%s\"", info.pSongType);
     qDebug("DecoderYm: initialize success");
@@ -110,8 +110,22 @@ int DecoderYm::bitrate()
 
 qint64 DecoderYm::read(char *audio, qint64 maxSize)
 {
-    if (pMusic->update((ymsample *)audio, maxSize / sizeof(ymsample)))
+    qint64      stereoSize, i;
+    ymsample    *psample=(ymsample *)audio;
+
+    stereoSize = maxSize / (2*sizeof(ymsample));
+    
+    if (pMusic->update(psample, stereoSize ))
+    {
+       // recopy mono YM sound to 2 channels
+       for (i=stereoSize-1; i>=0; i--)
+       {
+          psample[(i*2)    ] = psample[i];
+          psample[(i*2) + 1] = psample[i];
+       }
+       
        return maxSize;
+    }
        
     return 0;
 }

@@ -23,7 +23,6 @@ SOURCES += decoder_ym.cpp \
 
 include( ../translations/translations.pri )
 
-INCLUDEPATH += /usr/include/
 CONFIG += release \
 warn_on \
 plugin 

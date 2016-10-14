@@ -42,7 +42,7 @@ public:
     bool initialize();
     qint64 totalTime();
     int bitrate();
-    qint64 read(char *audio, qint64 maxSize);
+    qint64 read(unsigned char *audio, qint64 maxSize);
     void seek(qint64 time);
 
 private:

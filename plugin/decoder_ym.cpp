@@ -108,7 +108,7 @@ int DecoderYm::bitrate()
     return m_bitrate ? m_bitrate : 1;
 }
 
-qint64 DecoderYm::read(char *audio, qint64 maxSize)
+qint64 DecoderYm::read(unsigned char *audio, qint64 maxSize)
 {
     qint64      stereoSize, i;
     ymsample    *psample=(ymsample *)audio;

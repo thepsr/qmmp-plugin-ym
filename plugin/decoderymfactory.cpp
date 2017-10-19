@@ -1,17 +1,17 @@
 /******************************************************************************
  * Copyright (c) 2015-2016, Georges Thill
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
- * 
+ *
  * * Redistributions of source code must retain the above copyright notice, this
  *   list of conditions and the following disclaimer.
- * 
+ *
  * * Redistributions in binary form must reproduce the above copyright notice,
  *   this list of conditions and the following disclaimer in the documentation
  *   and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -53,7 +53,7 @@ bool DecoderYmFactory::canDecode(QIODevice *) const
 const DecoderProperties DecoderYmFactory::properties() const
 {
     DecoderProperties properties;
-    
+
     properties.name = tr("YM Plugin");
     properties.filters << "*.ym";
     properties.description = tr("YM Files");
@@ -76,7 +76,7 @@ QList<FileInfo *> DecoderYmFactory::createPlayList(const QString &fileName, bool
     QList <FileInfo *> list;
     CYmMusic *pMusic;
 	ymMusicInfo_t info;
-    
+
     pMusic = new CYmMusic;
     if (pMusic == NULL)
     {
@@ -87,20 +87,20 @@ QList<FileInfo *> DecoderYmFactory::createPlayList(const QString &fileName, bool
 	if (pMusic->load(fileName.toLocal8Bit()))
 	{
         list << new FileInfo(fileName);
-        
+
   	    pMusic->getMusicInfo(&info);
-  	    
+
         if (useMetaData)
         {
             char* title = strdup(info.pSongName);
             char* composer = strdup(info.pSongAuthor);
             char* comment = strdup(info.pSongComment);
-            
+
             list.at(0)->setMetaData(Qmmp::TITLE, QString::fromUtf8(title).trimmed());
             list.at(0)->setMetaData(Qmmp::COMPOSER, QString::fromUtf8(composer).trimmed());
             list.at(0)->setMetaData(Qmmp::COMMENT, QString::fromUtf8(comment).trimmed());
         }
-        
+
         list.at(0)->setLength(info.musicTimeInSec);
     }
 
@@ -121,7 +121,7 @@ void DecoderYmFactory::showSettings(QWidget *)
 void DecoderYmFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About YM Audio Plugin"),
-                        tr("Qmmp YM Audio Plugin")+" V 0.3\n"+
+                        tr("Qmmp YM Audio Plugin")+" V 0.5\n"+
                         tr("Written by:")+" Georges Thill\n"+
                         "\n"+
                         tr("Based on:")+"\n"+

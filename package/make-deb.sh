@@ -2,7 +2,7 @@
 
 PKGNAME=qmmp-plugin-ym
 PKGDIST=$(lsb_release -c -s)
-PKGVERS=0.4-1ubuntu1~${PKGDIST}
+PKGVERS=0.5-1ubuntu1~${PKGDIST}
 PKGARCH=$(dpkg --print-architecture)
 
 if [ "${PKGDIST}" == "trusty" ] ; then
@@ -21,9 +21,10 @@ Package: ${PKGNAME}
 Version: ${PKGVERS}
 Section: multimedia
 Priority: optional
-Installed-Size: $(du ../plugin/libym.so | sed -e "s/[ \t].*//") 
+Installed-Size: $(du ../plugin/libym.so | sed -e "s/[ \t].*//")
 Architecture: ${PKGARCH}
-Depends: qmmp (>=1.1.3), libqt5core5a (>=5.6.1)
+Depends: qmmp (>=1.1.6), libqt5core5a (>=5.9.1)
+Conflicts: ${PKGNAME}
 Maintainer: Georges Thill <thepsr@nixda.lu>
 Description: qmmp audio player - input plugin for ym music files
  Input plugin for ym music files.

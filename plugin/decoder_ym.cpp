@@ -98,12 +98,12 @@ void DecoderYm::deinit()
     pMusic = NULL;
 }
 
-qint64 DecoderYm::totalTime()
+qint64 DecoderYm::totalTime() const
 {
     return m_totalTime;
 }
 
-int DecoderYm::bitrate()
+int DecoderYm::bitrate() const
 {
     return m_bitrate ? m_bitrate : 1;
 }

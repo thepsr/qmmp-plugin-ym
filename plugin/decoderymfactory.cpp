@@ -31,6 +31,7 @@
 #include "decoder_ym.h"
 #include "decoderymfactory.h"
 
+/*
 //
 // DecoderYmFactory
 //
@@ -44,6 +45,7 @@ bool DecoderYmFactory::supports(const QString &source) const
     }
     return false;
 }
+*/
 
 bool DecoderYmFactory::canDecode(QIODevice *) const
 {

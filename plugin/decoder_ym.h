@@ -39,11 +39,11 @@ public:
     virtual ~DecoderYm();
 
     // Standard Decoder API
-    bool initialize();
-    qint64 totalTime();
-    int bitrate();
-    qint64 read(unsigned char *audio, qint64 maxSize);
-    void seek(qint64 time);
+    bool initialize() override;
+    qint64 totalTime() const override;
+    void seek(qint64 time) override;
+    int bitrate() const override;
+    qint64 read(unsigned char *audio, qint64 maxSize) override;
 
 private:
     // helper functions

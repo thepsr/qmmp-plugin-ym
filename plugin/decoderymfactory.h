@@ -45,15 +45,16 @@ Q_PLUGIN_METADATA(IID "org.qmmp.qmmp.DecoderFactoryInterface.1.0")
 Q_INTERFACES(DecoderFactory);
 
 public:
-    bool supports(const QString &source) const;
-    bool canDecode(QIODevice *input) const;
-    const DecoderProperties properties() const;
-    Decoder *create(const QString &path, QIODevice *);
-    QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData, QStringList *);
-    MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0);
-    void showSettings(QWidget *parent);
-    void showAbout(QWidget *parent);
-    QTranslator *createTranslator(QObject *parent);
+    // bool supports(const QString &source) const;
+
+    bool canDecode(QIODevice *input) const override;
+    const DecoderProperties properties() const override;
+    Decoder *create(const QString &path, QIODevice *) override;
+    QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData, QStringList *) override;
+    MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0) override;
+    void showSettings(QWidget *parent) override;
+    void showAbout(QWidget *parent) override;
+    QTranslator *createTranslator(QObject *parent) override;
 };
 
 #endif

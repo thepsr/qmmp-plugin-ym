@@ -27,35 +27,24 @@
 #ifndef DECODERYMFACTORY_H
 #define DECODERYMFACTORY_H
 
-#include <QObject>
-#include <QString>
-#include <QIODevice>
-#include <QWidget>
-
-#include <qmmp/decoder.h>
-#include <qmmp/output.h>
 #include <qmmp/decoderfactory.h>
-#include <qmmp/fileinfo.h>
 
 class DecoderYmFactory : public QObject,
                           DecoderFactory
 {
 Q_OBJECT
 Q_PLUGIN_METADATA(IID "org.qmmp.qmmp.DecoderFactoryInterface.1.0")
-Q_INTERFACES(DecoderFactory);
+Q_INTERFACES(DecoderFactory)
 
 public:
-    // bool supports(const QString &source) const;
-
     bool canDecode(QIODevice *input) const override;
-    const DecoderProperties properties() const override;
-    Decoder *create(const QString &path, QIODevice *) override;
-    QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData, QStringList *) override;
-    MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0) override;
+    DecoderProperties properties() const override;
+    Decoder *create(const QString &, QIODevice *) override;
+    QList<TrackInfo *> createPlayList(const QString &path, TrackInfo::Parts parts, QStringList *) override;
+    MetaDataModel* createMetaDataModel(const QString &path, bool readOnly) override;
     void showSettings(QWidget *parent) override;
     void showAbout(QWidget *parent) override;
-    QTranslator *createTranslator(QObject *parent) override;
+    QString translation() const override;
 };
 
 #endif
-

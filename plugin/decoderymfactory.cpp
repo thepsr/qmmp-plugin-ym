@@ -31,28 +31,13 @@
 #include "decoder_ym.h"
 #include "decoderymfactory.h"
 
-/*
-//
-// DecoderYmFactory
-//
-bool DecoderYmFactory::supports(const QString &source) const
-{
-    foreach(QString filter, properties().filters)
-    {
-        QRegExp regexp(filter, Qt::CaseInsensitive, QRegExp::Wildcard);
-        if (regexp.exactMatch(source))
-            return true;
-    }
-    return false;
-}
-*/
 
 bool DecoderYmFactory::canDecode(QIODevice *) const
 {
     return false;
 }
 
-const DecoderProperties DecoderYmFactory::properties() const
+DecoderProperties DecoderYmFactory::properties() const
 {
     DecoderProperties properties;
 
@@ -73,9 +58,9 @@ Decoder *DecoderYmFactory::create(const QString &path, QIODevice *)
     return new DecoderYm(path);
 }
 
-QList<FileInfo *> DecoderYmFactory::createPlayList(const QString &fileName, bool useMetaData, QStringList *)
+QList<TrackInfo *> DecoderYmFactory::createPlayList(const QString &fileName, TrackInfo::Parts parts, QStringList *)
 {
-    QList <FileInfo *> list;
+    QList <TrackInfo *> list;
     CYmMusic *pMusic;
 	ymMusicInfo_t info;
 
@@ -88,22 +73,32 @@ QList<FileInfo *> DecoderYmFactory::createPlayList(const QString &fileName, bool
 
 	if (pMusic->load(fileName.toLocal8Bit()))
 	{
-        list << new FileInfo(fileName);
+        list << new TrackInfo(fileName);
 
   	    pMusic->getMusicInfo(&info);
 
-        if (useMetaData)
+        if(parts & TrackInfo::MetaData)
         {
             char* title = strdup(info.pSongName);
             char* composer = strdup(info.pSongAuthor);
             char* comment = strdup(info.pSongComment);
 
-            list.at(0)->setMetaData(Qmmp::TITLE, QString::fromUtf8(title).trimmed());
-            list.at(0)->setMetaData(Qmmp::COMPOSER, QString::fromUtf8(composer).trimmed());
-            list.at(0)->setMetaData(Qmmp::COMMENT, QString::fromUtf8(comment).trimmed());
+            list.at(0)->setValue(Qmmp::TITLE, QString::fromUtf8(title).trimmed());
+            list.at(0)->setValue(Qmmp::COMPOSER, QString::fromUtf8(composer).trimmed());
+            list.at(0)->setValue(Qmmp::COMMENT, QString::fromUtf8(comment).trimmed());
         }
 
-        list.at(0)->setLength(info.musicTimeInSec);
+        if(parts & TrackInfo::MetaData)
+        {
+            char* type = strdup(info.pSongType);
+
+            list.at(0)->setValue(Qmmp::BITRATE, ((QFileInfo(fileName).size () * 8.0) / info.musicTimeInSec) + 0.5);
+            list.at(0)->setValue(Qmmp::SAMPLERATE, 44100);
+            list.at(0)->setValue(Qmmp::CHANNELS, 2);
+            list.at(0)->setValue(Qmmp::BITS_PER_SAMPLE, 16);
+            list.at(0)->setValue(Qmmp::FORMAT_NAME, QString::fromUtf8(type).trimmed());
+            list.at(0)->setDuration(info.musicTimeInMs);
+        }
     }
 
     delete pMusic;
@@ -111,9 +106,9 @@ QList<FileInfo *> DecoderYmFactory::createPlayList(const QString &fileName, bool
     return list;
 }
 
-MetaDataModel* DecoderYmFactory::createMetaDataModel(const QString&, QObject *)
+MetaDataModel* DecoderYmFactory::createMetaDataModel(const QString&, bool)
 {
-    return 0;
+    return nullptr;
 }
 
 void DecoderYmFactory::showSettings(QWidget *)
@@ -123,7 +118,7 @@ void DecoderYmFactory::showSettings(QWidget *)
 void DecoderYmFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About YM Audio Plugin"),
-                        tr("Qmmp YM Audio Plugin")+" V 0.6\n"+
+                        tr("Qmmp YM Audio Plugin")+" V 0.7\n"+
                         tr("Written by:")+" Georges Thill\n"+
                         "\n"+
                         tr("Based on:")+"\n"+
@@ -133,13 +128,7 @@ void DecoderYmFactory::showAbout(QWidget *parent)
                         "http://leonard.oxg.free.fr");
 }
 
-QTranslator *DecoderYmFactory::createTranslator(QObject *parent)
+QString DecoderYmFactory::translation() const
 {
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = Qmmp::systemLanguageID();
-    translator->load(QString(":/ym_plugin_") + locale);
-    return translator;
+    return QLatin1String(":/ym_plugin_");
 }
-
-
-

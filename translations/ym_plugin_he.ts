@@ -4,32 +4,32 @@
 <context>
     <name>DecoderYmFactory</name>
     <message>
-        <location filename="../plugin/decoderymfactory.cpp" line="57"/>
+        <location filename="../plugin/decoderymfactory.cpp" line="44"/>
         <source>YM Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../plugin/decoderymfactory.cpp" line="59"/>
+        <location filename="../plugin/decoderymfactory.cpp" line="46"/>
         <source>YM Files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../plugin/decoderymfactory.cpp" line="123"/>
+        <location filename="../plugin/decoderymfactory.cpp" line="113"/>
         <source>About YM Audio Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../plugin/decoderymfactory.cpp" line="124"/>
+        <location filename="../plugin/decoderymfactory.cpp" line="114"/>
         <source>Qmmp YM Audio Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../plugin/decoderymfactory.cpp" line="125"/>
+        <location filename="../plugin/decoderymfactory.cpp" line="115"/>
         <source>Written by:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../plugin/decoderymfactory.cpp" line="127"/>
+        <location filename="../plugin/decoderymfactory.cpp" line="117"/>
         <source>Based on:</source>
         <translation type="unfinished"></translation>
     </message>

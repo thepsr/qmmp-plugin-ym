@@ -2,7 +2,7 @@
 
 PKGNAME=qmmp-plugin-ym
 PKGDIST=$(lsb_release -c -s)
-PKGVERS=0.7-1ubuntu1~${PKGDIST}
+PKGVERS=0.8-1ubuntu1~${PKGDIST}
 PKGARCH=$(dpkg --print-architecture)
 
 if [ "${PKGDIST}" == "trusty" ] ; then
@@ -36,7 +36,7 @@ cp ../plugin/libym.so ${PKGNAME}_${PKGVERS}/${LPATH}/
 chmod 644 ${PKGNAME}_${PKGVERS}/${LPATH}/libym.so
 
 # create an install package
-dpkg-deb --build ${PKGNAME}_${PKGVERS} .
+dpkg-deb --root-owner-group --build ${PKGNAME}_${PKGVERS} .
 
 # clean up
 rm -rf ${PKGNAME}_${PKGVERS}

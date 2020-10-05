@@ -14,22 +14,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../plugin/decoderymfactory.cpp" line="113"/>
+        <location filename="../plugin/decoderymfactory.cpp" line="120"/>
         <source>About YM Audio Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../plugin/decoderymfactory.cpp" line="114"/>
+        <location filename="../plugin/decoderymfactory.cpp" line="121"/>
         <source>Qmmp YM Audio Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../plugin/decoderymfactory.cpp" line="115"/>
+        <location filename="../plugin/decoderymfactory.cpp" line="122"/>
         <source>Written by:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../plugin/decoderymfactory.cpp" line="117"/>
+        <location filename="../plugin/decoderymfactory.cpp" line="124"/>
         <source>Based on:</source>
         <translation type="unfinished"></translation>
     </message>

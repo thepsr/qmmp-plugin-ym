@@ -1,6 +1,6 @@
 # qmmp-plugin-ym
-Input plugin for qmmp 1.0.x to replay YM music modules. These are often neglected 
-on other players. Not anymore on qmmp. :-)
+Input plugin for qmmp 1.0.x - 1.3.x to replay YM music modules. These are often 
+neglected on other players. Not anymore on qmmp. :-)
 
 To build, you will need qtdevelopment files. On Ubuntu, what you need is usually
 installed with the "qttools5-dev", "qttools5-dev-tools", "qt5-default" & "qmmp"

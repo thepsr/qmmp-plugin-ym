@@ -4,12 +4,12 @@
 <context>
     <name>DecoderYmFactory</name>
     <message>
-        <location filename="../plugin/decoderymfactory.cpp" line="44"/>
+        <location filename="../plugin/decoderymfactory.cpp" line="43"/>
         <source>YM Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../plugin/decoderymfactory.cpp" line="46"/>
+        <location filename="../plugin/decoderymfactory.cpp" line="45"/>
         <source>YM Files</source>
         <translation type="unfinished"></translation>
     </message>

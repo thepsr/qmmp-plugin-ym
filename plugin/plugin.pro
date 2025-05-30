@@ -29,7 +29,7 @@ plugin
 
 QMAKE_CXXFLAGS += -Wno-unused-parameter
 
-INCLUDEPATH += /usr/include/qmmp-1
+INCLUDEPATH += /usr/include/qmmp
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -39,7 +39,7 @@ RESOURCES = ../translations/translations.qrc
 
 unix {
     QMAKE_LIBDIR += /usr/lib/qmmp
-    LIBS += -lqmmp-1
+    LIBS += -lqmmp
     QMAKE_CLEAN =./libym.so
 }
 

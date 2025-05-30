@@ -26,7 +26,6 @@
 
 #include <QMessageBox>
 #include <QtGui>
-#include <QRegExp>
 
 #include "decoder_ym.h"
 #include "decoderymfactory.h"
@@ -111,14 +110,15 @@ MetaDataModel* DecoderYmFactory::createMetaDataModel(const QString&, bool)
     return nullptr;
 }
 
-void DecoderYmFactory::showSettings(QWidget *)
+QDialog *DecoderYmFactory::createSettings(QWidget *)
 {
+    return nullptr;
 }
 
 void DecoderYmFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About YM Audio Plugin"),
-                        tr("Qmmp YM Audio Plugin")+" V 0.11\n"+
+                        tr("Qmmp YM Audio Plugin")+" V 0.12\n"+
                         tr("Written by:")+" Georges Thill\n"+
                         "\n"+
                         tr("Based on:")+"\n"+
